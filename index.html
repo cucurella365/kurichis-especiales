@@ -1,1 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kurichis Especiales | Yurimaguas</title>
+  <style>
+    :root {
+      --primary: #ff4757;
+      --secondary: #2ed573;
+      --dark: #2f3542;
+      --light: #f1f2f6;
+      --white: #ffffff;
+      --shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
 
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f8f9fa;
+      color: var(--dark);
+      padding-bottom: 80px;
+    }
+
+    header {
+      background: linear-gradient(135deg, #ff4757, #ff6b81);
+      color: var(--white);
+      text-align: center;
+      padding: 2.5rem 1rem;
+      border-bottom-left-radius: 25px;
+      border-bottom-right-radius: 25px;
+      box-shadow: var(--shadow);
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px 15px;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      margin: 20px 0 15px;
+      color: var(--dark);
+      border-left: 4px solid var(--primary);
+      padding-left: 10px;
+    }
+
+    /* Grid de Productos Responsive */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .product-card {
+      background: var(--white);
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-icon {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    .product-title {
+      font-size: 1.3rem;
+      margin-bottom: 5px;
+    }
+
+    .product-price {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+
+    .btn-add {
+      background-color: var(--primary);
+      color: var(--white);
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.2s;
+    }
+
+    .btn-add:hover {
+      background-color: #e84118;
+    }
+
+    /* Resumen de Pedido / Formulario */
+    .order-section {
+      background: var(--white);
+      border-radius: 15px;
+      padding: 20px;
+      margin-top: 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .cart-list {
+      list-style: none;
+      margin-bottom: 20px;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .cart-controls button {
+      background: var(--light);
+      border: none;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 0 5px;
+    }
+
+    .total-price {
+      font-size: 1.4rem;
+      font-weight: bold;
+      text-align: right;
+      margin: 15px 0;
+      color: var(--dark);
+    }
+
+    /* Formulario */
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    .btn-whatsapp {
+      background-color: var(--secondary);
+      color: var(--white);
+      border: none;
+      padding: 15px;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      width: 100%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 4px 10px rgba(46, 213, 115, 0.4);
+    }
+
+    .btn-whatsapp:hover {
+      background-color: #26af5f;
+    }
+
+    /* Responsivo para celulares pequeños */
+    @media (max-width: 480px) {
+      header h1 { font-size: 1.8rem; }
+      .products-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🍧 Kurichis Especiales</h1>
+    <p>¡Los mejores sabores tropicales de Yurimaguas a tu puerta!</p>
+  </header>
+
+  <div class="container">
+    
+    <h2 class="section-title">Elige tus Sabores</h2>
+    
+    <!-- Catálogo de Productos -->
+    <div class="products-grid">
+      
+      <div class="product-card">
+        <div>
+          <div class="product-icon">🥭</div>
+          <h3 class="product-title">Kurichi de Aguaje</h3>
+          <p class="product-price">S/ 2.50</p>
+        </div>
+        <button class="btn-add" onclick="addToCart('Kurichi de Aguaje', 2.50)">Agregar al Pedido</button>
+      </div>
+
+      <div class="product-card">
+        <div>
+          <div class="product-icon">🍒</div>
+          <h3 class="product-title">Kurichi de Camu Camu</h3>
+          <p class="product-price">S/ 2.50</p>
+        </div>
+        <button class="btn-add" onclick="addToCart('Kurichi de Camu Camu', 2.50)">Agregar al Pedido</button>
+      </div>
+
+      <div class="product-card">
+        <div>
+          <div class="product-icon">🍍</div>
+          <h3 class="product-title">Kurichi de Maracuyá</h3>
+          <p class="product-price">S/ 2.00</p>
+        </div>
+        <button class="btn-add" onclick="addToCart('Kurichi de Maracuyá', 2.00)">Agregar al Pedido</button>
+      </div>
+
+      <div class="product-card">
+        <div>
+          <div class="product-icon">🍫</div>
+          <h3 class="product-title">Kurichi de Chocolate</h3>
+          <p class="product-price">S/ 2.50</p>
+        </div>
+        <button class="btn-add" onclick="addToCart('Kurichi de Chocolate', 2.50)">Agregar al Pedido</button>
+      </div>
+
+      <div class="product-card">
+        <div>
+          <div class="product-icon">🥥</div>
+          <h3 class="product-title">Kurichi de Coco con Leche</h3>
+          <p class="product-price">S/ 3.00</p>
+        </div>
+        <button class="btn-add" onclick="addToCart('Kurichi de Coco con Leche', 3.00)">Agregar al Pedido</button>
+      </div>
+
+      <div class="product-card">
+        <div>
+          <div class="product-icon">🍓</div>
+          <h3 class="product-title">Kurichi de Fresa</h3>
+          <p class="product-price">S/ 2.50</p>
+        </div>
+        <button class="btn-add" onclick="addToCart('Kurichi de Fresa', 2.50)">Agregar al Pedido</button>
+      </div>
+
+    </div>
+
+    <!-- Sección de Pedido y Pago -->
+    <div class="order-section">
+      <h2 class="section-title">Tu Pedido</h2>
+      
+      <ul class="cart-list" id="cartList">
+        <li style="color: #777; text-align: center;">Tu carrito está vacío. ¡Agrega tus sabores favoritos arriba!</li>
+      </ul>
+
+      <div class="total-price">
+        Total: S/ <span id="totalAmount">0.00</span>
+      </div>
+
+      <h2 class="section-title">Datos de Entrega</h2>
+      
+      <form id="orderForm" onsubmit="sendWhatsApp(event)">
+        <div class="form-group">
+          <label for="name">Nombre Completo:</label>
+          <input type="text" id="name" placeholder="Ej. Juan Pérez" required>
+        </div>
+
+        <div class="form-group">
+          <label for="address">Dirección o Referencia (Yurimaguas):</label>
+          <input type="text" id="address" placeholder="Ej. Barrio San Antonio, Calle Comercio 123" required>
+        </div>
+
+        <div class="form-group">
+          <label for="payment">Método de Pago:</label>
+          <select id="payment" required>
+            <option value="Yape / Plin">Yape / Plin</option>
+            <option value="Efectivo">Efectivo contra entrega</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn-whatsapp">
+          📲 Enviar Pedido por WhatsApp
+        </button>
+      </form>
+    </div>
+
+  </div>
+
+  <script>
+    // Configura AQUÍ tu número de WhatsApp con código de país (Ejemplo Perú: 51XXXXXXXXX)
+    const WHATSAPP_NUMBER = "51900000000"; 
+
+    let cart = [];
+
+    function addToCart(productName, price) {
+      const existing = cart.find(item => item.name === productName);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ name: productName, price: price, qty: 1 });
+      }
+      updateCartUI();
+    }
+
+    function changeQty(index, change) {
+      cart[index].qty += change;
+      if (cart[index].qty <= 0) {
+        cart.splice(index, 1);
+      }
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const cartList = document.getElementById('cartList');
+      const totalAmount = document.getElementById('totalAmount');
+
+      if (cart.length === 0) {
+        cartList.innerHTML = '<li style="color: #777; text-align: center;">Tu carrito está vacío. ¡Agrega tus sabores favoritos arriba!</li>';
+        totalAmount.innerText = "0.00";
+        return;
+      }
+
+      cartList.innerHTML = '';
+      let total = 0;
+
+      cart.forEach((item, index) => {
+        const itemTotal = item.price * item.qty;
+        total += itemTotal;
+
+        const li = document.createElement('li');
+        li.className = 'cart-item';
+        li.innerHTML = `
+          <div>
+            <strong>${item.name}</strong><br>
+            <small>S/ ${item.price.toFixed(2)} x ${item.qty} = S/ ${itemTotal.toFixed(2)}</small>
+          </div>
+          <div class="cart-controls">
+            <button type="button" onclick="changeQty(${index}, -1)">-</button>
+            <span>${item.qty}</span>
+            <button type="button" onclick="changeQty(${index}, 1)">+</button>
+          </div>
+        `;
+        cartList.appendChild(li);
+      });
+
+      totalAmount.innerText = total.toFixed(2);
+    }
+
+    function sendWhatsApp(event) {
+      event.preventDefault();
+
+      if (cart.length === 0) {
+        alert("Por favor, agrega al menos un kurichi a tu pedido antes de continuar.");
+        return;
+      }
+
+      const name = document.getElementById('name').value;
+      const address = document.getElementById('address').value;
+      const payment = document.getElementById('payment').value;
+      const total = document.getElementById('totalAmount').innerText;
+
+      let message = `¡Hola! Quisiera realizar un pedido de *Kurichis Especiales* 🍧:\n\n`;
+      
+      cart.forEach(item => {
+        message += `• ${item.qty}x ${item.name} - S/ ${(item.price * item.qty).toFixed(2)}\n`;
+      });
+
+      message += `\n*Total a pagar:* S/ ${total}\n`;
+      message += `-------------------------\n`;
+      message += `👤 *Cliente:* ${name}\n`;
+      message += `📍 *Dirección:* ${address}\n`;
+      message += `💳 *Método de Pago:* ${payment}\n\n`;
+      message += `¡Quedo a la espera de su confirmación!`;
+
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+
+      window.open(whatsappURL, '_blank');
+    }
+  </script>
+</body>
+</html>
