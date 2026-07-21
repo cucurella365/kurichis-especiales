@@ -32,7 +32,7 @@
     body {
       background-color: var(--bg-catalog);
       color: var(--text-dark);
-      padding-bottom: 50px;
+      padding-bottom: 30px;
     }
 
     /* HEADER / PORTADA */
@@ -324,6 +324,16 @@
       transform: translateY(0);
     }
 
+    /* FOOTER / FIRMA */
+    footer {
+      text-align: center;
+      padding: 30px 15px 10px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+
     @media (max-width: 500px) {
       header h1 { font-size: 1.6rem; }
       .brand-highlight { font-size: 0.95rem; padding: 3px 12px; }
@@ -356,7 +366,7 @@
       </div>
 
       <div class="products-grid" id="productsGrid">
-        <!-- Se carga por JS -->
+        <!-- Se carga dinámicamente por JS -->
       </div>
     </section>
 
@@ -398,6 +408,11 @@
     </section>
 
   </div>
+
+  <!-- PIE DE PÁGINA (FIRMA CENTRADA) -->
+  <footer>
+    <p>Designed & Developed by Reynaldo Rojas</p>
+  </footer>
 
   <script>
     const WHATSAPP_NUMBER = "51991260103"; 
