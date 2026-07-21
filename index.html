@@ -3,309 +3,383 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kurichis Especiales | Yurimaguas</title>
+  <title>Kurichis Especiales TefaKing</title>
+  
+  <!-- Ícono de la página (Favicon) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍧</text></svg>">
+
   <style>
     :root {
-      --primary: #ff4757;
-      --secondary: #2ed573;
-      --dark: #2f3542;
-      --light: #f1f2f6;
-      --white: #ffffff;
-      --shadow: 0 4px 15px rgba(0,0,0,0.1);
+      --primary: #ff3366;
+      --primary-dark: #e01e51;
+      --secondary: #25d366;
+      --bg-catalog: #f4f7fe;
+      --bg-cart: #fff8f0;
+      --card-bg: #ffffff;
+      --text-dark: #2c3e50;
+      --text-muted: #7f8c8d;
+      --shadow-sm: 0 4px 10px rgba(0,0,0,0.05);
+      --shadow-md: 0 8px 25px rgba(0,0,0,0.1);
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
     }
 
     body {
-      background-color: #f8f9fa;
-      color: var(--dark);
-      padding-bottom: 80px;
+      background-color: var(--bg-catalog);
+      color: var(--text-dark);
+      padding-bottom: 50px;
     }
 
+    /* HEADER / PORTADA */
     header {
-      background: linear-gradient(135deg, #ff4757, #ff6b81);
-      color: var(--white);
+      background: linear-gradient(135deg, #ff3366 0%, #ff6b81 100%);
+      color: white;
       text-align: center;
-      padding: 2.5rem 1rem;
-      border-bottom-left-radius: 25px;
-      border-bottom-right-radius: 25px;
-      box-shadow: var(--shadow);
+      padding: 3rem 1rem 2.5rem;
+      border-bottom-left-radius: 35px;
+      border-bottom-right-radius: 35px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+
+    header .brand-tag {
+      background: rgba(255, 255, 255, 0.25);
+      display: inline-block;
+      padding: 4px 16px;
+      border-radius: 20px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+      text-transform: uppercase;
     }
 
     header h1 {
-      font-size: 2.2rem;
-      margin-bottom: 0.5rem;
+      font-size: 2.3rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.15);
     }
 
     header p {
-      font-size: 1.1rem;
-      opacity: 0.9;
+      font-size: 1.05rem;
+      opacity: 0.95;
     }
 
     .container {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 20px 15px;
+      padding: 0 15px;
+    }
+
+    /* SECCIÓN 1: CATÁLOGO DE SABORES */
+    .catalog-section {
+      padding: 30px 0;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 25px;
     }
 
     .section-title {
-      font-size: 1.5rem;
-      margin: 20px 0 15px;
-      color: var(--dark);
-      border-left: 4px solid var(--primary);
-      padding-left: 10px;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
-    /* Grid de Productos Responsive */
+    .price-badge {
+      background: #ffe3e8;
+      color: var(--primary);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
     .products-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 18px;
     }
 
     .product-card {
-      background: var(--white);
-      border-radius: 15px;
-      padding: 20px;
+      background: var(--card-bg);
+      border-radius: 18px;
+      padding: 20px 15px;
       text-align: center;
-      box-shadow: var(--shadow);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(0,0,0,0.03);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: transform 0.2s;
+      transition: all 0.25s ease;
     }
 
     .product-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
     }
 
     .product-icon {
-      font-size: 3rem;
+      font-size: 2.8rem;
       margin-bottom: 10px;
     }
 
-    .product-title {
-      font-size: 1.3rem;
-      margin-bottom: 5px;
+    .product-name {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 6px;
     }
 
     .product-price {
-      font-size: 1.2rem;
-      font-weight: bold;
       color: var(--primary);
-      margin-bottom: 15px;
+      font-weight: 800;
+      font-size: 1.1rem;
+      margin-bottom: 14px;
     }
 
     .btn-add {
-      background-color: var(--primary);
-      color: var(--white);
+      background: var(--primary);
+      color: white;
       border: none;
-      padding: 10px 15px;
-      border-radius: 8px;
-      font-size: 1rem;
-      font-weight: bold;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.95rem;
       cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
       width: 100%;
-      transition: background 0.2s;
     }
 
     .btn-add:hover {
-      background-color: #e84118;
+      background: var(--primary-dark);
     }
 
-    /* Resumen de Pedido / Formulario */
-    .order-section {
-      background: var(--white);
-      border-radius: 15px;
+    .btn-add:active {
+      transform: scale(0.97);
+    }
+
+    /* SECCIÓN 2: CARRITO Y REALIZAR PEDIDO (Color diferenciado) */
+    .checkout-section {
+      background-color: var(--bg-cart);
+      border: 2px solid #ffe0cc;
+      border-radius: 25px;
+      padding: 30px 20px;
+      margin-top: 20px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .cart-box {
+      background: white;
+      border-radius: 16px;
       padding: 20px;
-      margin-top: 30px;
-      box-shadow: var(--shadow);
+      margin-bottom: 25px;
+      box-shadow: var(--shadow-sm);
     }
 
     .cart-list {
       list-style: none;
-      margin-bottom: 20px;
     }
 
     .cart-item {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 0;
-      border-bottom: 1px solid #eee;
+      padding: 12px 0;
+      border-bottom: 1px dashed #eee;
+    }
+
+    .cart-item:last-child {
+      border-bottom: none;
+    }
+
+    .cart-item-info strong {
+      font-size: 1rem;
+      color: var(--text-dark);
+    }
+
+    .cart-item-info small {
+      color: var(--text-muted);
+    }
+
+    .cart-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .cart-controls button {
-      background: var(--light);
+      background: #f0f0f0;
       border: none;
-      width: 28px;
-      height: 28px;
+      width: 30px;
+      height: 30px;
       border-radius: 50%;
       font-weight: bold;
+      font-size: 1rem;
       cursor: pointer;
-      margin: 0 5px;
+      transition: background 0.2s;
+    }
+
+    .cart-controls button:hover {
+      background: #e0e0e0;
+    }
+
+    .cart-controls span {
+      font-weight: 700;
+      min-width: 20px;
+      text-align: center;
+    }
+
+    .empty-cart-msg {
+      text-align: center;
+      color: var(--text-muted);
+      padding: 15px 0;
+      font-size: 0.95rem;
+    }
+
+    .total-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      padding-top: 15px;
+      border-top: 2px solid #f4f4f4;
     }
 
     .total-price {
-      font-size: 1.4rem;
-      font-weight: bold;
-      text-align: right;
-      margin: 15px 0;
-      color: var(--dark);
+      color: var(--primary);
     }
 
-    /* Formulario */
+    /* FORMULARIO */
     .form-group {
-      margin-bottom: 15px;
+      margin-bottom: 18px;
     }
 
     .form-group label {
       display: block;
-      margin-bottom: 5px;
-      font-weight: 600;
+      font-weight: 700;
+      margin-bottom: 6px;
+      font-size: 0.95rem;
     }
 
     .form-group input, .form-group select {
       width: 100%;
-      padding: 12px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
+      padding: 12px 15px;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
       font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+      background: white;
+    }
+
+    .form-group input:focus, .form-group select:focus {
+      border-color: var(--primary);
     }
 
     .btn-whatsapp {
       background-color: var(--secondary);
-      color: var(--white);
+      color: white;
       border: none;
-      padding: 15px;
-      border-radius: 10px;
-      font-size: 1.1rem;
-      font-weight: bold;
+      padding: 16px;
+      border-radius: 14px;
+      font-size: 1.15rem;
+      font-weight: 800;
       width: 100%;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
-      box-shadow: 0 4px 10px rgba(46, 213, 115, 0.4);
+      box-shadow: 0 6px 18px rgba(37, 211, 102, 0.35);
+      transition: all 0.2s;
+      margin-top: 10px;
     }
 
     .btn-whatsapp:hover {
-      background-color: #26af5f;
+      background-color: #20bd5a;
+      transform: translateY(-2px);
     }
 
-    /* Responsivo para celulares pequeños */
-    @media (max-width: 480px) {
+    .btn-whatsapp:active {
+      transform: translateY(0);
+    }
+
+    @media (max-width: 500px) {
       header h1 { font-size: 1.8rem; }
-      .products-grid { grid-template-columns: 1fr; }
+      .section-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+      .products-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+      .product-card { padding: 15px 10px; }
+      .product-icon { font-size: 2.2rem; }
+      .product-name { font-size: 1rem; }
     }
   </style>
 </head>
 <body>
 
+  <!-- ENCABEZADO PRINCIPAL -->
   <header>
+    <div class="brand-tag">TefaKing</div>
     <h1>🍧 Kurichis Especiales</h1>
-    <p>¡Los mejores sabores tropicales de Yurimaguas a tu puerta!</p>
+    <p>¡Disfruta los mejores sabores helados y refrescantes!</p>
   </header>
 
   <div class="container">
     
-    <h2 class="section-title">Elige tus Sabores</h2>
-    
-    <!-- Catálogo de Productos -->
-    <div class="products-grid">
-      
-      <div class="product-card">
-        <div>
-          <div class="product-icon">🥭</div>
-          <h3 class="product-title">Kurichi de Aguaje</h3>
-          <p class="product-price">S/ 2.50</p>
+    <!-- SECCIÓN 1: SELECCIÓN DE SABORES -->
+    <section class="catalog-section">
+      <div class="section-header">
+        <h2 class="section-title">Nuestros Sabores</h2>
+        <span class="price-badge">S/ 2.00 c/u</span>
+      </div>
+
+      <div class="products-grid" id="productsGrid">
+        <!-- Los 21 productos se cargan dinámicamente mediante JS -->
+      </div>
+    </section>
+
+    <!-- SECCIÓN 2: RESUMEN DE PEDIDO Y PAGO (Fondo diferencial) -->
+    <section class="checkout-section">
+      <h2 class="section-title" style="margin-bottom: 20px;">🛒 Tu Pedido</h2>
+
+      <!-- Carrito -->
+      <div class="cart-box">
+        <ul class="cart-list" id="cartList">
+          <li class="empty-cart-msg">Aún no has agregado kurichis. ¡Elige tus favoritos arriba!</li>
+        </ul>
+
+        <div class="total-box">
+          <span>Total:</span>
+          <span class="total-price">S/ <span id="totalAmount">0.00</span></span>
         </div>
-        <button class="btn-add" onclick="addToCart('Kurichi de Aguaje', 2.50)">Agregar al Pedido</button>
       </div>
 
-      <div class="product-card">
-        <div>
-          <div class="product-icon">🍒</div>
-          <h3 class="product-title">Kurichi de Camu Camu</h3>
-          <p class="product-price">S/ 2.50</p>
-        </div>
-        <button class="btn-add" onclick="addToCart('Kurichi de Camu Camu', 2.50)">Agregar al Pedido</button>
-      </div>
-
-      <div class="product-card">
-        <div>
-          <div class="product-icon">🍍</div>
-          <h3 class="product-title">Kurichi de Maracuyá</h3>
-          <p class="product-price">S/ 2.00</p>
-        </div>
-        <button class="btn-add" onclick="addToCart('Kurichi de Maracuyá', 2.00)">Agregar al Pedido</button>
-      </div>
-
-      <div class="product-card">
-        <div>
-          <div class="product-icon">🍫</div>
-          <h3 class="product-title">Kurichi de Chocolate</h3>
-          <p class="product-price">S/ 2.50</p>
-        </div>
-        <button class="btn-add" onclick="addToCart('Kurichi de Chocolate', 2.50)">Agregar al Pedido</button>
-      </div>
-
-      <div class="product-card">
-        <div>
-          <div class="product-icon">🥥</div>
-          <h3 class="product-title">Kurichi de Coco con Leche</h3>
-          <p class="product-price">S/ 3.00</p>
-        </div>
-        <button class="btn-add" onclick="addToCart('Kurichi de Coco con Leche', 3.00)">Agregar al Pedido</button>
-      </div>
-
-      <div class="product-card">
-        <div>
-          <div class="product-icon">🍓</div>
-          <h3 class="product-title">Kurichi de Fresa</h3>
-          <p class="product-price">S/ 2.50</p>
-        </div>
-        <button class="btn-add" onclick="addToCart('Kurichi de Fresa', 2.50)">Agregar al Pedido</button>
-      </div>
-
-    </div>
-
-    <!-- Sección de Pedido y Pago -->
-    <div class="order-section">
-      <h2 class="section-title">Tu Pedido</h2>
-      
-      <ul class="cart-list" id="cartList">
-        <li style="color: #777; text-align: center;">Tu carrito está vacío. ¡Agrega tus sabores favoritos arriba!</li>
-      </ul>
-
-      <div class="total-price">
-        Total: S/ <span id="totalAmount">0.00</span>
-      </div>
-
-      <h2 class="section-title">Datos de Entrega</h2>
-      
+      <!-- Formulario simple (Sin campo dirección) -->
       <form id="orderForm" onsubmit="sendWhatsApp(event)">
         <div class="form-group">
-          <label for="name">Nombre Completo:</label>
-          <input type="text" id="name" placeholder="Ej. Juan Pérez" required>
-        </div>
-
-        <div class="form-group">
-          <label for="address">Dirección o Referencia (Yurimaguas):</label>
-          <input type="text" id="address" placeholder="Ej. Barrio San Antonio, Calle Comercio 123" required>
+          <label for="name">Tu Nombre Completo:</label>
+          <input type="text" id="name" placeholder="Ej. Carlos Pérez" required>
         </div>
 
         <div class="form-group">
           <label for="payment">Método de Pago:</label>
           <select id="payment" required>
             <option value="Yape / Plin">Yape / Plin</option>
-            <option value="Efectivo">Efectivo contra entrega</option>
+            <option value="Efectivo">Efectivo</option>
           </select>
         </div>
 
@@ -313,28 +387,73 @@
           📲 Enviar Pedido por WhatsApp
         </button>
       </form>
-    </div>
+    </section>
 
   </div>
 
   <script>
-    // Configura AQUÍ tu número de WhatsApp con código de país (Ejemplo Perú: 51XXXXXXXXX)
+    // Número oficial configurado
     const WHATSAPP_NUMBER = "51991260103"; 
+
+    // Lista completa con los 21 sabores
+    const products = [
+      { name: "Cheesecake de fresa", icon: "🍰" },
+      { name: "Cheesecake de maracuyá", icon: "🍰" },
+      { name: "Menta", icon: "🌿" },
+      { name: "Choco menta", icon: "🍫" },
+      { name: "Sublime", icon: "🍫" },
+      { name: "Choco maní", icon: "🥜" },
+      { name: "Fresa con leche", icon: "🍓" },
+      { name: "Choco fresa", icon: "🍫" },
+      { name: "Coco", icon: "🥥" },
+      { name: "Choco coco", icon: "🥥" },
+      { name: "Limón sour", icon: "🍋" },
+      { name: "Maracuyá sour", icon: "💛" },
+      { name: "Cerveza negra", icon: "🍺" },
+      { name: "Ron con pasas", icon: "🍇" },
+      { name: "Uva", icon: "🍇" },
+      { name: "Maní con leche", icon: "🥜" },
+      { name: "Aguaje", icon: "🌴" },
+      { name: "Chicle", icon: "🍬" },
+      { name: "Oreo", icon: "🍪" },
+      { name: "Magnum", icon: "🍦" },
+      { name: "Capuchino", icon: "☕" }
+    ];
 
     let cart = [];
 
-    function addToCart(productName, price) {
+    // Renderizar catálogo
+    function renderProducts() {
+      const grid = document.getElementById('productsGrid');
+      grid.innerHTML = '';
+
+      products.forEach(prod => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = `
+          <div>
+            <div class="product-icon">${prod.icon}</div>
+            <div class="product-name">${prod.name}</div>
+            <div class="product-price">S/ 2.00</div>
+          </div>
+          <button type="button" class="btn-add" onclick="addToCart('${prod.name}')">+ Agregar</button>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function addToCart(productName) {
       const existing = cart.find(item => item.name === productName);
       if (existing) {
         existing.qty += 1;
       } else {
-        cart.push({ name: productName, price: price, qty: 1 });
+        cart.push({ name: productName, price: 2.00, qty: 1 });
       }
       updateCartUI();
     }
 
-    function changeQty(index, change) {
-      cart[index].qty += change;
+    function changeQty(index, delta) {
+      cart[index].qty += delta;
       if (cart[index].qty <= 0) {
         cart.splice(index, 1);
       }
@@ -346,7 +465,7 @@
       const totalAmount = document.getElementById('totalAmount');
 
       if (cart.length === 0) {
-        cartList.innerHTML = '<li style="color: #777; text-align: center;">Tu carrito está vacío. ¡Agrega tus sabores favoritos arriba!</li>';
+        cartList.innerHTML = '<li class="empty-cart-msg">Aún no has agregado kurichis. ¡Elige tus favoritos arriba!</li>';
         totalAmount.innerText = "0.00";
         return;
       }
@@ -361,9 +480,9 @@
         const li = document.createElement('li');
         li.className = 'cart-item';
         li.innerHTML = `
-          <div>
+          <div class="cart-item-info">
             <strong>${item.name}</strong><br>
-            <small>S/ ${item.price.toFixed(2)} x ${item.qty} = S/ ${itemTotal.toFixed(2)}</small>
+            <small>S/ 2.00 x ${item.qty} = S/ ${itemTotal.toFixed(2)}</small>
           </div>
           <div class="cart-controls">
             <button type="button" onclick="changeQty(${index}, -1)">-</button>
@@ -381,25 +500,23 @@
       event.preventDefault();
 
       if (cart.length === 0) {
-        alert("Por favor, agrega al menos un kurichi a tu pedido antes de continuar.");
+        alert("Por favor, agrega al menos un kurichi a tu pedido.");
         return;
       }
 
       const name = document.getElementById('name').value;
-      const address = document.getElementById('address').value;
       const payment = document.getElementById('payment').value;
       const total = document.getElementById('totalAmount').innerText;
 
-      let message = `¡Hola! Quisiera realizar un pedido de *Kurichis Especiales* 🍧:\n\n`;
+      let message = `¡Hola *TefaKing*! Quisiera realizar un pedido de *Kurichis Especiales* 🍧:\n\n`;
       
       cart.forEach(item => {
-        message += `• ${item.qty}x ${item.name} - S/ ${(item.price * item.qty).toFixed(2)}\n`;
+        message += `• ${item.qty}x ${item.name} = S/ ${(item.price * item.qty).toFixed(2)}\n`;
       });
 
-      message += `\n*Total a pagar:* S/ ${total}\n`;
+      message += `\n💵 *Total a Pagar:* S/ ${total}\n`;
       message += `-------------------------\n`;
       message += `👤 *Cliente:* ${name}\n`;
-      message += `📍 *Dirección:* ${address}\n`;
       message += `💳 *Método de Pago:* ${payment}\n\n`;
       message += `¡Quedo a la espera de su confirmación!`;
 
@@ -408,6 +525,9 @@
 
       window.open(whatsappURL, '_blank');
     }
+
+    // Inicializar la vista
+    renderProducts();
   </script>
 </body>
 </html>
