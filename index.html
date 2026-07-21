@@ -40,30 +40,35 @@
       background: linear-gradient(135deg, #ff3366 0%, #ff6b81 100%);
       color: white;
       text-align: center;
-      padding: 3rem 1rem 2.5rem;
+      padding: 2.5rem 1rem;
       border-bottom-left-radius: 35px;
       border-bottom-right-radius: 35px;
       box-shadow: var(--shadow-md);
-      position: relative;
-    }
-
-    header .brand-tag {
-      background: rgba(255, 255, 255, 0.25);
-      display: inline-block;
-      padding: 4px 16px;
-      border-radius: 20px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      font-size: 0.9rem;
-      margin-bottom: 8px;
-      text-transform: uppercase;
     }
 
     header h1 {
-      font-size: 2.3rem;
+      font-size: 2.2rem;
       font-weight: 800;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
       text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    }
+
+    /* Etiqueta resaltada para TefaKing */
+    .brand-highlight {
+      background: #ffffff;
+      color: var(--primary);
+      padding: 4px 16px;
+      border-radius: 20px;
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      text-transform: uppercase;
     }
 
     header p {
@@ -171,7 +176,7 @@
       transform: scale(0.97);
     }
 
-    /* SECCIÓN 2: CARRITO Y REALIZAR PEDIDO (Color diferenciado) */
+    /* SECCIÓN 2: CARRITO Y REALIZAR PEDIDO */
     .checkout-section {
       background-color: var(--bg-cart);
       border: 2px solid #ffe0cc;
@@ -320,7 +325,8 @@
     }
 
     @media (max-width: 500px) {
-      header h1 { font-size: 1.8rem; }
+      header h1 { font-size: 1.6rem; }
+      .brand-highlight { font-size: 0.95rem; padding: 3px 12px; }
       .section-header { flex-direction: column; align-items: flex-start; gap: 8px; }
       .products-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
       .product-card { padding: 15px 10px; }
@@ -333,8 +339,10 @@
 
   <!-- ENCABEZADO PRINCIPAL -->
   <header>
-    <div class="brand-tag">TefaKing</div>
-    <h1>🍧 Kurichis Especiales</h1>
+    <h1>
+      🍧 Kurichis Especiales 
+      <span class="brand-highlight">TefaKing</span>
+    </h1>
     <p>¡Disfruta los mejores sabores helados y refrescantes!</p>
   </header>
 
@@ -348,11 +356,11 @@
       </div>
 
       <div class="products-grid" id="productsGrid">
-        <!-- Los 21 productos se cargan dinámicamente mediante JS -->
+        <!-- Se carga por JS -->
       </div>
     </section>
 
-    <!-- SECCIÓN 2: RESUMEN DE PEDIDO Y PAGO (Fondo diferencial) -->
+    <!-- SECCIÓN 2: RESUMEN DE PEDIDO Y PAGO -->
     <section class="checkout-section">
       <h2 class="section-title" style="margin-bottom: 20px;">🛒 Tu Pedido</h2>
 
@@ -368,7 +376,7 @@
         </div>
       </div>
 
-      <!-- Formulario simple (Sin campo dirección) -->
+      <!-- Formulario -->
       <form id="orderForm" onsubmit="sendWhatsApp(event)">
         <div class="form-group">
           <label for="name">Tu Nombre Completo:</label>
@@ -384,7 +392,7 @@
         </div>
 
         <button type="submit" class="btn-whatsapp">
-          📲 Enviar Pedido por WhatsApp
+          📲 Confirmar Pedido
         </button>
       </form>
     </section>
@@ -392,10 +400,8 @@
   </div>
 
   <script>
-    // Número oficial configurado
     const WHATSAPP_NUMBER = "51991260103"; 
 
-    // Lista completa con los 21 sabores
     const products = [
       { name: "Cheesecake de fresa", icon: "🍰" },
       { name: "Cheesecake de maracuyá", icon: "🍰" },
@@ -422,7 +428,6 @@
 
     let cart = [];
 
-    // Renderizar catálogo
     function renderProducts() {
       const grid = document.getElementById('productsGrid');
       grid.innerHTML = '';
@@ -525,7 +530,7 @@
 
       window.open(whatsappURL, '_blank');
     }
-    // Inicializar la vista
+
     renderProducts();
   </script>
 </body>
